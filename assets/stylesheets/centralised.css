@@ -1,0 +1,581 @@
+/* Grid */
+.grid {
+    display: grid;
+    grid-template-rows: auto auto auto auto; /* header row, fading row, main body row and footer row */
+    grid-template-columns: 0.1fr 2fr 0.1fr; /* left space, main space, right space */
+    grid-template-areas:
+        "myheader myheader myheader" /* header row has 3 columns */
+        "myfading myfading myfading" /* fading row has 3 columns*/
+        "myleft mymain myright" /* main content row has 3 columns*/
+        "myleft myfooter myright"; /* footer row has 3 columns */
+    gap: 5px; /* grid border space */
+}
+
+/* Body */
+body {
+    font-family: Arial; /* website's entire font family */
+    background-color: #0c66ab; /* website's entire background colour */
+}
+
+/* Anchor element */
+a {
+    color: white; /* texts with href attributes are in white */
+    text-decoration: none; /* removes underline for texts with href attributes */
+}
+
+/* Header */
+header {
+    grid-area: myheader;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 5px; /* space between logo column, search column and navigation column*/
+}
+
+/* Logo */
+.logo {
+    display: flex; /*arranges  Paw Uni logo and Paw Uni text into a line.*/
+    background-color: #0c66ab;
+}
+
+.logo-image {
+    width: 50px; /* Paw Uni logo width */
+    height: 40px; /* Paw Uni logo height */
+    border-radius: 5px; /* rounds the Paw Uni logo corners*/
+    margin-left: 20px; /* creates left side space for the Paw Uni logo*/
+    cursor: pointer; /* hand cursor for the Paw Uni logo */
+}
+
+.logo h1 {
+    cursor: pointer; /* hand cursor for the Paw Uni text */
+    color: white; /* Paw Uni text colour */
+    font-size: 1rem; 
+}
+
+/* Search */
+.search-bar {
+    display: flex; /* positions the search bar text horizontally */
+    justify-content: center; /* automatically adjust search bar when resizing window */
+    align-items: center; /* centers the search bar horizontally */
+    background-color: #0c66ab;
+}
+
+.search-bar input {
+    padding: 5px;
+    width: 500px; /* Search bar width */
+    border-radius: 5px;
+    margin-right: 10px; /* creates right side space for the search bar*/
+    border: none; /* removes button borders*/
+}
+
+.search-button {
+    background-color: #00bfa6; /* search button box colour */
+    color: white; /* search button text colour */
+    border-radius: 5px; /* rounds the search button corners*/
+    cursor: pointer;
+    padding: 5px;
+    border: none; /* removes button borders*/
+}
+
+/* Navigation */
+.navigation {
+    background-color: #0c66ab;
+    display: flex; /* positions the search bar text horizontally */
+    justify-content: right; /* automatically adjust navigation buttons when resizing window */
+    align-items: center; /* centers the navigation buttons horizontally */
+}
+
+.navigation-button {
+    background-color: #00bfa6; /* navigation button box colour */
+    padding: 5px;
+    margin-left: 10px; /* creates left side space for the navigation buttons*/
+    cursor: pointer;
+    color: white; /* navigation button text colour */
+    border-radius: 5px; /* rounds navigation button corners */
+    border: none; /* removes button borders */
+}
+
+
+
+/* Fading */
+.fading-background {
+    grid-area: myfading;
+    position: relative;
+    width: 100%;
+    height: 700px; /* ensure this matches the height of your images */
+    overflow: hidden; /* hide any overflow during transitions */
+}
+
+.fading-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.fading-set img {
+    width: 100%; /* fading images fills the entire width of the window */
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px; /* creates a 10px border space around the fading images */
+}
+
+.fading-set {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    animation: fade-in-out 30s infinite;
+}
+
+/* Animation delays for each fading image set */
+.set1 {
+    animation-delay: 0s;
+}
+.set2 {
+    animation-delay: 10s;
+}
+.set3 {
+    animation-delay: 20s;
+}
+
+/* Fade in and fade out keyframes */
+@keyframes fade-in-out {
+    0%,
+    10% {
+        opacity: 0;
+    } /* start with the set fully hidden */
+    10%,
+    20% {
+        opacity: 1;
+    } /* fade in for the first 10% of the time */
+    30%,
+    33.33% {
+        opacity: 1;
+    } /* keep fully visible for the rest of the time */
+    40%,
+    50% {
+        opacity: 0;
+    } /* fade out smoothly */
+}
+
+/* Row 1 */
+.row1-image {
+    display: flex; /* arranges row 1 thumbnail image into a line */
+    flex-direction: row; /* arranges row 1 thumbnail image into a row */
+    align-items: center; /* centers the row 1 thumbnail image within its row */
+    gap: 10px; /* space between row 1 thumbnail image and row 3 texts */
+    margin: 10px; /* space around row 1 */
+}
+
+.row1-image img {
+    max-width: 45%; /* limits the row 3 thumbnail image to only 40% of it row */
+    height: auto; /* automatically adjust height of the thumbnail image */
+    object-fit: cover; /* adjust thumbnail image size to aautomatically fill in leftover row space */
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.row1-text {
+    display: flex; /* arranges row 3 texts into a line */
+    flex-direction: column; /* arranges row 1 texts line vertically */
+    flex: 1; /* grow and shrink texts and thumbnail image to fill the available space in its row when adjusting window size*/
+}
+
+/* Row 2 */
+.row2-image {
+    display: flex;
+    flex-direction: row-reverse; /* arranges row 2 text on the left and row 2 thumbnail image on the right */
+    align-items: center;
+    gap: 10px;
+    margin: 10px;
+}
+
+.row2-image img {
+    max-width: 45%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.row2-text {
+    display: flex; 
+    flex-direction: column; 
+    flex: 1; 
+}
+
+/* Row 3 */
+.row3-image {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+	margin: 10px;
+}
+
+.row3-image img {
+    max-width: 45%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.row3-text {
+    display: flex; 
+    flex-direction: column; 
+    flex: 1; 
+}
+
+
+
+/* Main space */
+main {
+    grid-area: mymain;
+}
+
+/* HOME.PHP */
+.home {
+    background-color: #0c66ab; /* background colour */
+    color: white; /* text colour */
+}
+
+
+
+/* SIGNUP.PHP */
+.signup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Sign-Up Form */
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* space between form elements */
+    text-align: left; /* align labels and inputs to the left */
+}
+
+/* Inputs */
+.signup-form input {
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 5px; 
+    width: 100%;
+    box-sizing: border-box; 
+}
+
+/* SIGNUP-FUNCTION.PHP */
+.signup-container {
+    background-color: white; 
+    padding: 20px;
+    border-radius: 5px; 
+    max-width: 400px; 
+    width: 100%; 
+    text-align: center;
+}
+
+.signup-form label {
+    font-size: 1rem;
+    color: #0c66ab;
+    margin-bottom: 5px; /* space between label and input */
+}
+
+
+
+/* SIGNIN.PHP */
+.signin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Sign in Form */
+.signin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+    text-align: left; 
+}
+
+/* Inputs */
+.signin-form input {
+    padding: 10px; 
+    font-size: 14px; 
+    border-radius: 5px; 
+    width: 100%; 
+    box-sizing: border-box; 
+}
+
+/* SIGNIN-FUNCTION.PHP */
+.signin-container {
+    background-color: white; /* white background for the form  */
+    padding: 20px;
+    border-radius: 5px; 
+    max-width: 400px; 
+    width: 100%; 
+    text-align: center;
+}
+
+/* Labels */
+.signin-form label {
+    font-size: 16px; 
+    color: #0c66ab; 
+}
+
+/* Submit Button */
+.submit-button {
+    display: inline-block;
+    background-color: #00bfa6;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    border: none;
+}
+
+/* Message Container */
+.message-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 200px); 
+    text-align: center; 
+    color: white; 
+    padding: 20px; 
+}
+
+.message-container p {
+    font-size: 1rem; 
+    line-height: 1.6;
+}
+
+
+
+/* DASHBOARD.PHP */
+.dashboard {
+    background-color: #0c66ab; /* background colour */
+    color: white; /* text colour */
+}
+
+.beginner-lessons-title,
+.intermediate-lessons-title,
+.advance-lessons-title {
+    text-align: center;
+}
+
+.lessons-title {
+    display: flex; /* positions the thumbnails and texts horizontally */
+    justify-content: center; /* automatically adjust thumbnails and texts to the center when resizing window */
+    gap: 20px; /* space between the thumbnails */
+    flex-wrap: wrap; /* automatically adjust thumbnails and texts onto one line or multiple lines when resizing window */
+}
+
+.lesson-image h2 {
+    margin-top: 10px;
+    font-weight: bold; /* bold text lessons */
+    text-align: center;
+    width: 240px; /* set width same as the image for consistency */
+    cursor: pointer; /* hand cursor for lesson texts */
+    font-size: 1rem; /* lessons text font size */
+    margin-bottom: 50px; /* space below the thumbnail texts */
+}
+
+.lesson-image img {
+    width: 240px; /* set the width of the images */
+    height: 135px; /* set the height of the images */
+    object-fit: fill; /* fill automatically resize images to width and height dimensions */
+    border-radius: 5px; /* rounds the lesson thumbnail corners */
+    cursor: pointer; /* hand cursor for lesson thumbnails */
+}
+
+
+
+/* BEGINNER-LESSONS.PHP */
+.beginner-lessons-list {
+    background-color: #0c66ab; /* background colour */
+    color: white; /* text colour */
+}
+
+/* Beginner lessons list title */
+.beginner-lessons-list h1 {
+    text-align: center;
+    color: white; /* Keep title text white */
+    margin-bottom: 20px;
+}
+
+/* Lesson Container */
+.lesson-container {
+    display: grid; /* Enables grid layout */
+    grid-template-columns: repeat(5, 1fr); /* 5 columns in each row */
+    gap: 20px; /* 20px space between each lesson */
+    justify-content: center; /* Center the grid on the page */
+    padding: 20px; 
+}
+
+/* Lesson Box */
+.lesson-box {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1rem;
+    color: white; 
+}
+
+/* Thumbnail Image */
+.lesson-thumbnail {
+    width: 240px; /* width of thumbnail image */
+    height: 135px; /* height of the thumbnail image */
+    display: block; /* the thumbnail image take its own line */
+    margin: 0 auto 10px; /* center the thumbnail image and add spacing below */
+	border-radius: 5px;
+}
+
+/* Links */
+.lesson-box a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+
+/* Pagination */
+.pagination {
+    grid-area: mypagination;
+    display: flex;
+    justify-content: center;
+    background-color: #0c66ab;
+}
+
+.pagination-button {
+    background-color: #00bfa6;
+    padding: 5px 10px;
+    margin: 10px;
+    cursor: pointer;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+
+
+/* LESSONS.PHP */
+.lessons {
+    background-color: #0c66ab; /* background colour */
+    color: white; /* text colour */
+}
+
+/* Video Section */
+.video {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Spacing between the video and button */
+    margin-bottom: 20px; /* Space below the video section */
+}
+
+.video iframe, .video video {
+    display: block;
+}
+
+/* Book Button */
+.book-button {
+    display: inline-block;
+    background-color: #00bfa6;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Lesson Details Section */
+.lesson-details {
+    text-align: center; /* Center-align text */
+    margin: 20px auto; /* Center horizontally */
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #0c66ab;
+    color: white;
+    width: 50%; 
+    box-shadow: none; /* removes box shadow */
+}
+
+.lesson-details p {
+    margin: 10px 0; /* space between paragraphs */
+}
+
+.lesson-details strong {
+    color: white; /* make the labels white */
+}
+
+
+
+/* BOOKING.PHP */
+.booking {
+    background-color: #0c66ab; /* background colour */
+    color: white; /* text colour */
+}
+
+
+
+
+
+
+
+
+/* Footer */
+.footer {
+    grid-area: myfooter;
+    font-size: 1rem;
+    color: white; /* entire footer table text colour */
+}
+
+.footer-table {
+    width: 100%;
+    border-collapse: collapse; /* removes footer table borders*/
+    text-align: center; /* align entire footer table text to the center */
+}
+
+.footer-table th {
+    background-color: #0c66ab; /* footer table header background colour */
+}
+
+.footer-table th,
+.footer-table td {
+    padding: 5px; /* 5px padding space*/
+}
+
+.footer td span {
+    cursor: pointer; /* hand cursor for footer table text only (footer table header does not have a hand cursor */
+}
+
+.footer-table td {
+    background-color: #0c66ab; /* footer table background colour */
+}
+
+/* Left space */
+.left-aside {
+    grid-area: myleft;
+    background-color: #0c66ab; /* left aside space background colour */
+}
+
+/* Right space */
+.right-aside {
+    grid-area: myright;
+    background-color: #0c66ab; /* right aside space background colour */
+}
